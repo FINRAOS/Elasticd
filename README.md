@@ -29,3 +29,5 @@ Write a light weight application that informs the frontends of the backends allo
 *	Cloud agnostic
   *	Here at FINRA we use AWS but the resource locator can be extended for other cloud offerings
 
+  ![Alt text](https://github.com/FINRAOS/Elasticd/blob/master/docs/img/elasticd.png?raw=true)
+

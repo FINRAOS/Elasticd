@@ -1,9 +1,9 @@
 # Elasticd 
 
-## Objective
+### Objective
 The goal is to have the frontends communicate with backends directly by using ip address and not DNS in cloud environments.  This will remove the unnecessary components in-between and the associated overhead.  
 
-## Why Elasticd?
+### Why Elasticd?
 *	AWS is very dynamic in nature.  A lot of their services start with ‘E’ which stands for elastic
   *	IP addresses change all the time
   *	The number of server performing a task may increase or decrease at anytime
@@ -18,9 +18,9 @@ The goal is to have the frontends communicate with backends directly by using ip
   *	More components mean more overhead in maintenance, testing, and development
   *	More components mean more failure points 
 
-## Solution Description
+### Solution Description
 Write a light weight application that informs the frontends of the backends allowing them to communicate directly using ip addresses.  
-### Features
+#### Features
 *	Pluggable – ability to extend and component to suit your needs
 *	Frontend agnostic 
   *	Provide additional implementations for different frontend technologies (Varnish, Nginx, etc)

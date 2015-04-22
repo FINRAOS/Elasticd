@@ -1,0 +1,2 @@
+# Elasticd
+Home of Elasticd

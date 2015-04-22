@@ -1,4 +1,4 @@
-# : Elasticd 
+# Elasticd 
 
 ## Objective
 The goal is to have the frontends communicate with backends directly by using ip address and not DNS in cloud environments.  This will remove the unnecessary components in-between and the associated overhead.  

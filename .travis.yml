@@ -7,11 +7,3 @@ before_script:
 script:
   # Normal tests
   - python -m unittest discover
-notifications:
-  irc:
-    channels: "irc.freenode.org#fabric"
-    template:
-      - "%{repository}@%{branch}: %{message} (%{build_url})"
-    on_success: change
-    on_failure: change
-  email: false

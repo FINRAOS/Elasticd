@@ -21,7 +21,7 @@ The goal is to have the frontends communicate with backends directly by using ip
 ### Solution Description
 Write a light weight application that informs the frontends of the backends allowing them to communicate directly using ip addresses.  
 #### Features
-*	Pluggable – ability to extend and component to suit your needs
+*	Pluggable – ability to extend components to suit your needs
 *	Frontend agnostic 
   *	Provide additional implementations for different frontend technologies (Varnish, Nginx, etc)
 *	Backend agnostic

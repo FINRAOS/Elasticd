@@ -1,0 +1,62 @@
+__author__ = 'patelm'
+
+import logging
+import importlib
+
+
+DATASTORE_KEY = 'datastore'
+DRIVER_KEY = 'driver'
+RESOURCE_LOCATOR_KEY = 'resource-locator'
+
+required_attributes = {DATASTORE_KEY: ['add_backend'],
+                       DRIVER_KEY: ['update'],
+                       RESOURCE_LOCATOR_KEY: ['get_resources']}
+
+#todo lots of exception handling.
+
+class PluginManager():
+    #plugion cache
+    plugins = {}
+
+    def __init__(self, config):
+        logging.debug('initializing plugins ')
+        self._load_plugins(config)
+
+    def get_datastore(self):
+        return self.plugins[DATASTORE_KEY]
+
+    def get_driver(self):
+        return self.plugins[DRIVER_KEY]
+
+    def get_resource_locator(self):
+        return self.plugins[RESOURCE_LOCATOR_KEY]
+
+    def _load_plugins(self, config):
+        self._load_plugin(DATASTORE_KEY, config)
+        self._load_plugin(DRIVER_KEY, config)
+        self._load_plugin(RESOURCE_LOCATOR_KEY, config)
+
+    def _load_plugin(self, plugin_type, config):
+        logging.debug('Loading %s' % plugin_type)
+
+        module_name = config.get(plugin_type, 'module_name')
+        plugin_class = config.get(plugin_type, 'plugin_class')
+
+        # Load the module and get a handle to the class definition.
+        module = importlib.import_module(module_name)
+        plugin_class = getattr(module, plugin_class)
+
+        # Validate the class definition is correct.
+        if self._plugin_is_valid(plugin_class, required_attributes[plugin_type]):
+            # Instantiate the class and cache it within this plugin manager
+            self.plugins[plugin_type] = plugin_class(config)
+
+    @staticmethod
+    def _plugin_is_valid(plugin, _required_attributes):
+        valid = True
+        for attribute in _required_attributes:
+            if hasattr(plugin, attribute):
+                valid = True
+            else:
+                return False
+        return valid

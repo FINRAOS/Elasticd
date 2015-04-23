@@ -3,5 +3,5 @@
 import elasticd
 
 #elasticd.startup()
-elasticd.startup('C:\dev\projects\elasticd\conf\settings.cfg')
+elasticd.startup('C:\dev\projects\github\Elasticd\conf\settings.cfg')
 

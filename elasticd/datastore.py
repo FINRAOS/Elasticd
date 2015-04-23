@@ -8,3 +8,9 @@ class Datastore(BasePlugin):
     def add_backend(self):
         pass
 
+    def remove_backend(self):
+        pass
+
+    def get_all_backends(self):
+        pass
+

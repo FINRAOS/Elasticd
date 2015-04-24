@@ -1,5 +1,4 @@
 from elasticd.locator import ResourceLocator
-import boto.ec2
 import boto
 
 
@@ -11,6 +10,7 @@ class AWSinstanceLocator(ResourceLocator):
         ResourceLocator.get_resources(self)
         ec2 = boto.connect_ec2()
         #search for the backend servers
+        #todo read the filter from configuration
         reservations = ec2.get_all_instances(filters={'tag:AGS': 'fnrw',
                                                       'tag:SDLC': 'DEV',
                                                       'tag:Purpose': 'finra.org_drupal',

@@ -43,5 +43,6 @@ class Registrar():
 
         """
         print 'informing the driver'
-        self.driver.update()
+        backends = self.datastore.get_all_backends()
+        self.driver.update(backends)
 

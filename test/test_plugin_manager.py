@@ -1,8 +1,8 @@
 import unittest
-from elasticd.base_plugin import BasePlugin
-from elasticd.locator import ResourceLocator
-from elasticd.driver import Driver
-from elasticd.datastore import Datastore
+from elasticd.plugins import BasePlugin
+from elasticd.plugins import ResourceLocator
+from elasticd.plugins import Driver
+from elasticd.plugins import Datastore
 from elasticd.plugin_manager import PluginManager
 import os
 import ConfigParser

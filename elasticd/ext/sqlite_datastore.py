@@ -2,7 +2,7 @@ __author__ = 'patelm'
 
 import logging
 
-from elasticd.datastore import Datastore
+from elasticd.plugins import Datastore
 
 
 class SqliteDatastore(Datastore):

@@ -1,4 +1,4 @@
-from elasticd.locator import ResourceLocator
+from elasticd.plugins import ResourceLocator
 import boto
 
 

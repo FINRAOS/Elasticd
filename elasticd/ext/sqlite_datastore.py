@@ -2,7 +2,7 @@ __author__ = 'patelm'
 
 import logging
 
-from elasticd.datastore import Datastore
+from elasticd.plugins import Datastore
 
 
 class SqliteDatastore(Datastore):
@@ -10,6 +10,6 @@ class SqliteDatastore(Datastore):
         Datastore.__init__(self, config)
         logging.debug('sqlite datasource started')
 
-    def add_backend(self):
-        Datastore.add_backend(self)
+    def add_backend(self, ip_address):
+        Datastore.add_backend(self, ip_address)
 

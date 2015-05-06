@@ -9,6 +9,7 @@ import ConfigParser
 import logging
 import server
 import daemon
+import thread
 from registrar import Registrar
 from elasticd import registrar
 from plugin_manager import PluginManager
@@ -28,21 +29,22 @@ def startup(config_path=DEFAULT_SETTINGS_FILE):
     config.read(config_path)
 
     #Load the plugin manager to get a handle to the plugins.
-    p_manager = PluginManager(config)
-    _locator = p_manager.get_resource_locator()
-    _datastore = p_manager.get_datastore()
-    _driver = p_manager.get_driver()
+    plugin_manager = PluginManager(config)
+    _locator = plugin_manager.get_resource_locator()
+    _datastore = plugin_manager.get_datastore()
+    _driver = plugin_manager.get_driver()
 
     _registrar = Registrar(_datastore, _driver)
 
-    #start looking for backends
-    daemon.start(_registrar, _locator, config)
-
+    #should the listener be started?
     start_server = config.getboolean('DEFAULT', 'start_server')
-
     if start_server:
         server.set_registrar(registrar)
-        server.start()
+        thread.start(server.start())
+
+    #start looking for backends and updating the driver
+    #THIS CALL WILL NOT RETURN
+    daemon.start(_registrar, _locator, config)
 
 
 

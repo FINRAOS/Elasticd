@@ -1,4 +1,4 @@
-from elasticd.driver import Driver
+from elasticd.plugins import Driver
 
 
 class VarnishDriver(Driver):

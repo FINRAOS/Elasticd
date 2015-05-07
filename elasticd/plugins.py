@@ -14,6 +14,7 @@
 
 """
 
+
 class BasePlugin():
     _config = None
 
@@ -23,8 +24,8 @@ class BasePlugin():
         All common plugin functions should reside in this class.  At the moment only a handle to the
         configuration is common.
 
-        Args:
-            config (ConfigParser.ConfigParser): will be passed in from the plugin manager
+        :param config(ConfigParser.ConfigParser): will be passed in from the plugin manager
+        :return:
         """
         _config = config
 

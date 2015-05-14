@@ -1,10 +1,14 @@
+##
+# Copy settings.cfg.default to settigns.cfg to get started.
+##
+
 [DEFAULT]
 # How often to check for new resources in seconds.
-locate_interval=10
+locate_interval=300
 
 # How often to process resource changes.
 # This setting can be lower because the registrar will only call it when there are new changes.
-driver_interval=5
+driver_interval=60
 
 # Start the flask web service.
 start_server = false
@@ -14,6 +18,7 @@ start_server = false
 # Plugins
 #
 # All plugins require a module_name and plugin_class.
+# Only one plugin of each type can be active at one time.
 ##
 [datastore]
 module_name = elasticd.ext.inmemory_datastore
@@ -29,9 +34,8 @@ plugin_class = VarnishDriver
 
 
 [resource-locator]
-#module_name = elasticd.ext.aws_resource_locator
-#plugin_class = AWSinstanceLocator
+module_name = elasticd.ext.aws_resource_locator
+plugin_class = AWSinstanceLocator
 
-module_name = elasticd.ext.mock_resource_locator
-plugin_class = MockResourceLocator
-
+#module_name = elasticd.ext.mock_resource_locator
+#plugin_class = MockResourceLocator

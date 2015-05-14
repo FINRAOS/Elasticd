@@ -12,22 +12,27 @@ class VarnishDriver(Driver):
     def __init__(self, config):
         Driver.__init__(self, config)
 
-    def update(self, current_state):
-        Driver.update(self, current_state)
+    def update(self, resources):
+        Driver.update(self, resources)
+        if not resources:
+            return
 
-        #loader = jinja2.FileSystemLoader(os.path.realpath(__file__) + '/../templates/')
-        env = Environment(loader=FileSystemLoader('/Users/k24042/Sites/elasticd_github/templates'))
+        # Get the templates directory.
+        templates_dir = os.path.dirname(os.path.realpath(__file__)) + '/../../templates'
+        templates_dir = os.path.realpath(templates_dir)
+
+        # Setup template environment.
+        env = Environment(loader=FileSystemLoader(templates_dir))
         # @todo - Ben - Make a config param for this.
         template = env.get_template('backend.vcl')
-        #template = Template('Hello {{ name }}!')
 
-        template_values = {
-            'name': 'Ben'
-        }
-
-        rendered_result = template.render(template_values)
+        # Switch this to load out of current_state.
+        rendered_result = template.render({'resources': resources})
 
         # Save to file.
         # @todo - Ben - Make a config param for where to save to.
 
         print rendered_result
+
+        # Bounce the varnish config
+        # exec(varnish reload)

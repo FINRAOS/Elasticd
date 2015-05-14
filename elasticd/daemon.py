@@ -22,9 +22,8 @@ def start(_registrar, _locator, config):
 def process_locator():
     resources = resource_locator.get_resources()
     for item in resources:
-        print 'register %s' % item
+        print 'register {0}'.format(item)
         registrar.register(item)
-
 
 def process_registrar():
     registrar.process()

@@ -1,4 +1,4 @@
-# ElasticD 
+# ElasticD for direct communication between frotends and backends 
 
 ### Objective
 The goal is to have frontends communicate directly with backends by using IP addresses instead of DNS in cloud environments. This will remove the unnecessary components in-between the two and associated overhead. 

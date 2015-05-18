@@ -22,7 +22,7 @@ The goal is to have frontends communicate directly with backends by using IP add
 Create a light weight application that informs the frontends of the backends, allowing them to communicate directly with IP addresses.  
 #### Features
 *	Pluggable
-	  *It's able to extend components to suit your needs.
+  *	 It's able to extend components to suit your needs.
 *	Frontend agnostic 
   *	Additional implementations are available for different frontend technologies (Varnish, Nginx, etc).
 *	Backend agnostic

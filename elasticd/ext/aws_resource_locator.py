@@ -1,5 +1,7 @@
 from elasticd.plugins import ResourceLocator
+from elasticd.resource import IPResource
 import boto
+
 
 
 class AWSinstanceLocator(ResourceLocator):
@@ -18,7 +20,7 @@ class AWSinstanceLocator(ResourceLocator):
         instances = [i for reservation in reservations for i in reservation.instances]
         backends = []
         for server in instances:
-            ip_address = server.private_ip_address
+            ip_address = IPResource(server.private_ip_address)
             backends.append(ip_address)
 
         return backends

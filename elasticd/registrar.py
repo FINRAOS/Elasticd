@@ -52,7 +52,7 @@ class Registrar():
     def process(self):
         """Inform the driver of the current state of the backends
         """
-        print 'informing the driver'
+        logging.debug('informing the driver')
         if self.last_change > self.last_run:
             logging.debug("Calling driver update.")
             backends = self.datastore.get_all_backends()

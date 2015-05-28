@@ -27,5 +27,6 @@ def process_locator():
         logging.debug('register {0}'.format(item))
         registrar.register(item)
 
+
 def process_registrar():
     registrar.process()

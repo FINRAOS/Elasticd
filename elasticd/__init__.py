@@ -9,7 +9,7 @@ import ConfigParser
 import logging
 import server
 import daemon
-import thread
+from threading import Thread
 from registrar import Registrar
 from elasticd import registrar
 from plugin_manager import PluginManager
@@ -40,7 +40,7 @@ def startup(config_path=DEFAULT_SETTINGS_FILE):
     start_server = config.getboolean('DEFAULT', 'start_server')
     if start_server:
         server.set_registrar(registrar)
-        thread.start(server.start())
+        Thread.start(server.start())
 
     #start looking for backends and updating the driver
     #THIS CALL WILL NOT RETURN

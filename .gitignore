@@ -1,3 +1,6 @@
+#elasticd log file
+*.log*
+
 # Mac and PyCharm stuff
 .DS_Store
 .idea

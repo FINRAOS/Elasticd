@@ -32,7 +32,7 @@ class VarnishDriver(Driver):
         # Save to file.
         # @todo - Ben - Make a config param for where to save to.
 
-        print rendered_result
+        logging.debug(rendered_result)
 
         # Bounce the varnish config
         # exec(varnish reload)

@@ -17,7 +17,6 @@ class InmemoryDatastore(Datastore):
 
     def add_backend(self, resource):
         Datastore.add_backend(self, resource)
-        _backends = self.get_all_backends()
         self.resources.append(resource)
 
     def remove_backend(self, resource):

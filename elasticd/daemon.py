@@ -1,5 +1,7 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 
+import logging
+
 scheduler = BlockingScheduler()
 
 resource_locator = None
@@ -22,8 +24,9 @@ def start(_registrar, _locator, config):
 def process_locator():
     resources = resource_locator.get_resources()
     for item in resources:
-        print 'register {0}'.format(item)
+        logging.debug('register {0}'.format(item))
         registrar.register(item)
+
 
 def process_registrar():
     registrar.process()

@@ -7,10 +7,12 @@
 - [Features](#4)
 - [Setup](#5)- 
 
-### Objective <a name="1"></a>
+<a name="1"></a>
+### Objective 
 The goal is to have frontends communicate directly with backends by using IP addresses instead of DNS in cloud environments. This will remove the unnecessary components in-between the two and associated overhead. 
 
-### Why ElasticD? <a name="2"></a>
+<a name="2"></a>
+### Why ElasticD? 
 *	AWS is very dynamic in nature. A lot of their services start with ‘E’ for elastic. 
   *	IP addresses change all the time, allowing more flexibility.
   *	The number of server performing a task may increase or decrease at any time.
@@ -25,10 +27,12 @@ The goal is to have frontends communicate directly with backends by using IP add
   *	More components meant more overhead in maintenance, testing, and development.
   *	More components meant more failure points.
 
-### Solution <a name="3"></a>
+<a name="3"></a>
+### Solution
 Create a light weight application that informs the frontends of the backends, allowing them to communicate directly with IP addresses.  
 
-#### Features <a name="4"></a>
+<a name="4"></a>
+#### Features
 *	Pluggable
   *	 It's able to extend components to suit your needs.
 *	Frontend agnostic 
@@ -40,7 +44,8 @@ Create a light weight application that informs the frontends of the backends, al
 
   ![Alt text](https://github.com/FINRAOS/Elasticd/blob/master/docs/img/elasticd.png?raw=true)
 
-##Setup <a name="5"></a>
+<a name="5"></a>
+##Setup 
 This section will walk you through how to start up the ElasticD services
 You will need to install the following
 *   Pip

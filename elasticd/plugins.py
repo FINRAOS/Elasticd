@@ -15,8 +15,14 @@
 """
 
 
+DATASTORE_KEY = 'datastore'
+DRIVER_KEY = 'driver'
+RESOURCE_LOCATOR_KEY = 'resource-locator'
+
+
 class BasePlugin():
     _config = None
+    _config_section = None
 
     def __init__(self, config):
         """All elasticd plugins should inherit this class directly or indirectly.
@@ -29,6 +35,14 @@ class BasePlugin():
         """
         _config = config
 
+    def _get_config_value(self, name):
+        """
+        Gets config value for the
+        :param name:
+        :return:  The value from the configuration section
+        """
+        return self.config.get(self._config_section, name)
+
 
 class Datastore(BasePlugin):
     def __init__(self, config):
@@ -40,6 +54,7 @@ class Datastore(BasePlugin):
         :return:
         """
         BasePlugin.__init__(self, config)
+        self._config_section = DATASTORE_KEY
 
     def add_backend(self, ip_address):
         pass
@@ -62,6 +77,7 @@ class Driver(BasePlugin):
         :return:
         """
         BasePlugin.__init__(self, config)
+        self._config_section = DRIVER_KEY
 
     def update(self, current_state):
         pass
@@ -77,6 +93,7 @@ class ResourceLocator(BasePlugin):
         :return:
         """
         BasePlugin.__init__(self, config)
+        self._config_section = RESOURCE_LOCATOR_KEY
 
     def get_resources(self):
         pass

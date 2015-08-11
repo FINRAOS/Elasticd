@@ -18,13 +18,14 @@ class VarnishDriver(Driver):
             return
 
         # Get the templates directory.
-        templates_dir = os.path.dirname(os.path.realpath(__file__)) + '/../../templates'
+        templates_dir = os.path.dirname(os.path.realpath(__file__)) + \
+                        self._get_config_value('templates_path')
         templates_dir = os.path.realpath(templates_dir)
 
         # Setup template environment.
         env = Environment(loader=FileSystemLoader(templates_dir))
         # @todo - Ben - Make a config param for this.
-        template = env.get_template('backend.vcl')
+        template = env.get_template(self._get_config_value('backend_vcl_path'))
 
         # Switch this to load out of current_state.
         rendered_result = template.render({'resources': resources})

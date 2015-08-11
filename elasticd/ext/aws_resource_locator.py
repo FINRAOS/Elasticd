@@ -12,8 +12,6 @@ class AWSinstanceLocator(ResourceLocator):
         ResourceLocator.get_resources(self)
         ec2 = boto.connect_ec2()
         #search for the backend servers
-        #todo read the filter from configuration
-        reservations = ec2.get_all_instances()
 
         # Build set of filters for instance lookup
         configItems = self._get_all_config_items()
@@ -27,7 +25,7 @@ class AWSinstanceLocator(ResourceLocator):
         
 
         # Add instance state filter
-        filterDict['instance-state-name']: 'running'
+        filterDict['instance-state-name'] = 'running'
         reservations = ec2.get_all_instances(filters = filterDict)
         instances = [i for reservation in reservations for i in reservation.instances]
         backends = []

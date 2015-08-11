@@ -49,7 +49,7 @@ class BasePlugin():
         this section
         :return:  All items from this config section
         """
-        return self.config.items(self._config_section)
+        return self._config.items(self._config_section)
 
 class Datastore(BasePlugin):
     def __init__(self, config):

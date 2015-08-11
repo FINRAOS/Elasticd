@@ -1,5 +1,3 @@
-__author__ = 'patelm'
-
 import logging
 import importlib
 

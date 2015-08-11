@@ -5,7 +5,7 @@
 - [Purpose](#2)
 - [Solution](#3)
 - [Features](#4)
-- [Setup](#5)- 
+- [Setup](#5)
 
 <a name="1"></a>
 ### Objective 

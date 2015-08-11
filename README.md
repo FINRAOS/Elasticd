@@ -32,3 +32,18 @@ Create a light weight application that informs the frontends of the backends, al
 
   ![Alt text](https://github.com/FINRAOS/Elasticd/blob/master/docs/img/elasticd.png?raw=true)
 
+##Setup
+This section will walk you through how to start up the ElasticD services
+You will need to install the following
+*   Pip
+*   Flask
+*   Jinja2
+*   boto
+*   apscheduler
+
+After that you can run 
+python bin/run.py
+or
+python test/test_driver.py
+
+

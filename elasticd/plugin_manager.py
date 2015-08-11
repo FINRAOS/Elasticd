@@ -68,7 +68,7 @@ class PluginManager():
         # Validate the class definition is correct.
         if self._plugin_is_valid(plugin_class, required_attributes[plugin_type]):
             # Instantiate the class and cache it within this plugin manager
-            self.plugins[plugin_type] = plugin_class(config.get)
+            self.plugins[plugin_type] = plugin_class(config)
 
     @staticmethod
     def _plugin_is_valid(plugin, _required_attributes):

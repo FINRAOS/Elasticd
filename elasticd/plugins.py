@@ -33,7 +33,7 @@ class BasePlugin():
         :param config(ConfigParser.ConfigParser): will be passed in from the plugin manager
         :return:
         """
-        _config = config
+        self._config = config
 
     def _get_config_value(self, name):
         """
@@ -41,7 +41,7 @@ class BasePlugin():
         :param name:
         :return:  The value from the configuration section
         """
-        return self.config.get(self._config_section, name)
+        return self._config.get(self._config_section, name)
 
 
 class Datastore(BasePlugin):

@@ -8,7 +8,7 @@ import os
 import ConfigParser
 
 def get_test_plugin_manager():
-    config_file = os.path.dirname(os.path.realpath(__file__)) + '/../conf/settings.cfg'
+    config_file = os.path.dirname(os.path.realpath(__file__)) + '/../test-conf/settings.cfg'
     config_file = os.path.realpath(config_file)
 
     config = ConfigParser.ConfigParser()

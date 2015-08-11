@@ -43,6 +43,13 @@ class BasePlugin():
         """
         return self._config.get(self._config_section, name)
 
+    def _get_all_config_items(self):
+        """
+        Gets a list of tuples for all key values pairs in
+        this section
+        :return:  All items from this config section
+        """
+        return self.config.items(self._config_section)
 
 class Datastore(BasePlugin):
     def __init__(self, config):

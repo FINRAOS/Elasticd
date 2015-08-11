@@ -9,7 +9,7 @@ class TestDriver(unittest.TestCase):
         resources = _plugin_manager.get_resource_locator()
         backends = resources.get_resources()
         print backends
-        self.assertTrue(_driver.update(_driver), "Hello Jasdasdasdohn Doe2")
+        _driver.update(backends)
 
 if __name__ == '__main__':
     unittest.main()

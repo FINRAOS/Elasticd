@@ -43,7 +43,6 @@ class BasePlugin():
         """
         return self._config.get(self._config_section, name)
 
-
 class Datastore(BasePlugin):
     def __init__(self, config):
         """Datastore plugins are used to store the ip address information for all known backend hosts.

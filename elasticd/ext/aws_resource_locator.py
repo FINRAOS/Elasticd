@@ -1,22 +1,38 @@
 from elasticd.plugins import ResourceLocator
 from elasticd.resource import IPResource
 import boto
-
-
+import yaml
+import os
 
 class AWSinstanceLocator(ResourceLocator):
+    _dataMap = None
+
     def __init__(self, config):
         ResourceLocator.__init__(self, config)
-
+        fpath = os.path.dirname(__file__) + "/" + self._get_config_value('aws_config')
+        f = open(fpath)
+        self._dataMap = yaml.safe_load(f)
+        # todo: error handling of this file loading
+        # todo: move to file loading utility
+        f.close()
+        
     def get_resources(self):
         ResourceLocator.get_resources(self)
         ec2 = boto.connect_ec2()
         #search for the backend servers
-        #todo read the filter from configuration
-        reservations = ec2.get_all_instances(filters={'tag:AGS': 'fnrw',
-                                                      'tag:SDLC': 'DEV',
-                                                      'tag:Purpose': 'finra.org_drupal',
-                                                      'instance-state-name': 'running'})
+
+        # Build set of filters for instance lookup
+        filterDict = {}
+
+        # Add tag filters from config
+        for ignore, kvmap in self._dataMap['aws_tags'].items():
+            print kvmap['key'] + "=>" + kvmap['value']
+            tagKey = "tag:" + kvmap['key']
+            filterDict[tagKey] = kvmap['value']
+
+        # Add instance state filter
+        filterDict['instance-state-name'] = 'running'
+        reservations = ec2.get_all_instances(filters = filterDict)
         instances = [i for reservation in reservations for i in reservation.instances]
         backends = []
         for server in instances:

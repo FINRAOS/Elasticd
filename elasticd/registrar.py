@@ -1,5 +1,6 @@
 import logging
 
+
 class Registrar():
     """Responsible for registering/deregistering backends and informing the Driver with the latest information
 

@@ -46,10 +46,9 @@ def startup(config_path=DEFAULT_SETTINGS_FILE):
 
 
 def setup_logging(config):
-    handler = logging.handlers.TimedRotatingFileHandler(config.get('DEFAULT', 'log_file'),
-                                                        when="d",
-                                                        interval=1,
-                                                        backupCount=5)
+    handler = logging.handlers.RotatingFileHandler(config.get('DEFAULT', 'log_file'),
+                                                   maxBytes=1024*1024*100,
+                                                   backupCount=5)
     formatter = logging.Formatter(LOG_FORMAT)
     handler.setFormatter(formatter)
     logger = logging.getLogger()

@@ -1,5 +1,8 @@
-#elasticd log file
+# ElasticD log file
 *.log*
+
+# ElasticD config
+conf/settings.cfg
 
 # Mac and PyCharm stuff
 .DS_Store

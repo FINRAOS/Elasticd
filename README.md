@@ -53,6 +53,7 @@ You will need to install the following
 *   Jinja2
 *   boto
 *   apscheduler
+*   pyyaml
 
 After that you can run 
 python bin/run.py

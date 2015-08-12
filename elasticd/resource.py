@@ -1,5 +1,3 @@
-__author__ = 'k24042'
-
 # A resource is something that can be located, stored, and passed to a driver for processing.
 # In this regard all resources require compatible resource_locator, datastore, and driver plugins to function.
 

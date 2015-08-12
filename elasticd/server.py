@@ -1,4 +1,3 @@
-__author__ = 'patelm'
 from flask import Flask
 from registrar import Registrar
 

@@ -1,13 +1,21 @@
 from elasticd.plugins import ResourceLocator
 from elasticd.resource import IPResource
 import boto
-
-
+import yaml
+import os
 
 class AWSinstanceLocator(ResourceLocator):
+    _dataMap = None
+
     def __init__(self, config):
         ResourceLocator.__init__(self, config)
-
+        fpath = os.path.dirname(__file__) + "/" + self._get_config_value('aws_config')
+        f = open(fpath)
+        self._dataMap = yaml.safe_load(f)
+        # todo: error handling of this file loading
+        # todo: move to file loading utility
+        f.close()
+        
     def get_resources(self):
         ResourceLocator.get_resources(self)
         ec2 = boto.connect_ec2()
@@ -18,11 +26,10 @@ class AWSinstanceLocator(ResourceLocator):
         filterDict = {}
 
         # Add tag filters from config
-        for item in configItems:
-            if (item[0].startswith('aws_tag')):
-                tagKey = "tag:" + item[0].split('_')[2] 
-                filterDict[tagKey] = item[1] 
-        
+        for ignore, kvmap in self._dataMap['aws_tags'].items():
+            print kvmap['key'] + "=>" + kvmap['value']
+            tagKey = "tag:" + kvmap['key']
+            filterDict[tagKey] = kvmap['value']
 
         # Add instance state filter
         filterDict['instance-state-name'] = 'running'

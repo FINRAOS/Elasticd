@@ -43,14 +43,6 @@ class BasePlugin():
         """
         return self._config.get(self._config_section, name)
 
-    def _get_all_config_items(self):
-        """
-        Gets a list of tuples for all key values pairs in
-        this section
-        :return:  All items from this config section
-        """
-        return self._config.items(self._config_section)
-
 class Datastore(BasePlugin):
     def __init__(self, config):
         """Datastore plugins are used to store the ip address information for all known backend hosts.

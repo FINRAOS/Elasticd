@@ -1,0 +1,11 @@
+# AWS yaml test config
+aws_tags:
+    tag_sdlc:
+        key: "SDLC"
+        value: "DEV"
+    tag_ags:
+        key: "AGS"
+        value: "FNRW"
+    tag_role:
+        key: "role"
+        value: "fnrw-app"

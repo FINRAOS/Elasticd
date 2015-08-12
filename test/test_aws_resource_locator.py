@@ -1,4 +1,5 @@
 from test import *
+import elasticd.resource
 
 class TestAWSResourceLocator(unittest.TestCase):
     def test_init(self):
@@ -7,9 +8,10 @@ class TestAWSResourceLocator(unittest.TestCase):
 
         _resource_locator = _plugin_manager.get_resource_locator()
 
-
         self._test_obj(_resource_locator, ResourceLocator)
         resources = _resource_locator.get_resources()
+        # Check if list
+        self.assertNotIsInstance(resources, basestring)
 
     def _test_obj(self, obj, cls):
         self.assertIsNotNone(obj)

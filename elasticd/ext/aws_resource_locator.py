@@ -22,7 +22,6 @@ class AWSinstanceLocator(ResourceLocator):
         #search for the backend servers
 
         # Build set of filters for instance lookup
-        configItems = self._get_all_config_items()
         filterDict = {}
 
         # Add tag filters from config

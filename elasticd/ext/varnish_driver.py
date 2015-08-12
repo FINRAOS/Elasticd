@@ -3,10 +3,10 @@ from elasticd.plugins import Driver
 from jinja2 import Template
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
-
 import os
-
+import subprocess
 import logging
+
 
 class VarnishDriver(Driver):
     def __init__(self, config):
@@ -24,16 +24,22 @@ class VarnishDriver(Driver):
 
         # Setup template environment.
         env = Environment(loader=FileSystemLoader(templates_dir))
-        # @todo - Ben - Make a config param for this.
-        template = env.get_template(self._get_config_value('backend_vcl_path'))
+        template = env.get_template(self._get_config_value('template_name'))
 
         # Switch this to load out of current_state.
         rendered_result = template.render({'resources': resources})
 
         # Save to file.
-        # @todo - Ben - Make a config param for where to save to.
+        filename = '%s/%s' % (self._get_config_value('vcl_output_path'),
+                              self._get_config_value('vcl_output_name'))
+        filename = os.path.realpath(filename)
+
+        f = open(filename, "w")
+        f.write(rendered_result)
+        f.close()
 
         logging.debug(rendered_result)
 
         # Bounce the varnish config
-        # exec(varnish reload)
+        if self._config.getboolean(self._config_section, 'varnish_reload'):
+            subprocess.call('service varnishd reload')

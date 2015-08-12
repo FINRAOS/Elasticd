@@ -1,5 +1,6 @@
 # ElasticD log file
 *.log*
+bin/backend.vcl
 
 # ElasticD config
 conf/settings.cfg

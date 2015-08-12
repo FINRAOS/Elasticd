@@ -2,7 +2,7 @@ __author__ = 'k24042'
 
 from elasticd.plugins import ResourceLocator
 from elasticd.resource import IPResource
-import boto
+
 
 class MockResourceLocator(ResourceLocator):
     def __init__(self, config):

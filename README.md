@@ -1,4 +1,4 @@
-# ElasticD for direct communication between frotends and backends 
+# ElasticD for direct communication between frontends and backends 
 
 ##Table Of Contents
 - [Objectives](#1)
